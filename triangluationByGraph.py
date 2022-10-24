@@ -305,7 +305,7 @@ class Graph:
         return None
         
 if __name__ == "__main__":
-    graph = Graph(60, 10)
+    graph = Graph(12, 3)
     graph.build()
     start = time.time()
     # graph.print_graph()
