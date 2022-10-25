@@ -1,5 +1,7 @@
 """
-triangulation.py                             
+*******************************DEPRECIATED*****************************
+triangulation.py   
+Version: 0.1.1                         
 Author: Levi Graham
 Date: 13.10.2022
 
@@ -9,15 +11,11 @@ Description:
     Kappa Mu Epsilon meeting on 10.10.2022. This file creates a graph
     theory approach to finding the tiling any given n and k value.
     
-Modifications:
- - 12.10.2022 | LG | Added base Vertex and Graph classes.
- - 12.10.2022 | LG | Started implementation on building the graph.
- - 13.10.2022 | LG | Fixed bug in building the graph. Started writing 
-                     documentation for this file.
- - 13.10.2022 | LG | Fixed bug to allow for generalized n and k values.
- - 13.10.2022 | LG | Added print_graph method to Graph class.
- - 13.10.2022 | LG | Stubbed out the generate squence methods in Graph
-                     class.
+Version History:
+    0.1.0 - Initial Vertex and Graph implementation, includes traversing
+            the graph by going down first.
+    0.1.1 - Implments pickling and unpickling graphs so that graphs can
+            be generated before they are traversed.
 """
 import time
 
