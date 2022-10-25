@@ -1,3 +1,3 @@
-# KMETriangulationProblem
+# kme-triangulation-problem
 
-For more information on the problem this repository is trying to solve look to the repository's wiki.
+Documentation for the problem we are solving and our findings can be found in this repository's wiki.
