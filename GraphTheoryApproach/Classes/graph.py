@@ -1,104 +1,21 @@
 """
-triangulation.py                             
+graph.py
+Version: 0.1.0
 Author: Levi Graham
-Date: 13.10.2022
+Date: 24.10.2022
 
-Description: 
-    triangulation.py is an implementation to try and find a solution 
-    the triangluation problem that was proposed in the 
-    Kappa Mu Epsilon meeting on 10.10.2022. This file creates a graph
-    theory approach to finding the tiling any given n and k value.
+Description:
+    This file is the class definition for the graph class to implement
+    the triangulation problem proposed in the Kappa Mu Epsilon meeting
+    on 10.10.2022. This file contains the definitions to perform the 
+    graph operations needed.
     
-Modifications:
- - 12.10.2022 | LG | Added base Vertex and Graph classes.
- - 12.10.2022 | LG | Started implementation on building the graph.
- - 13.10.2022 | LG | Fixed bug in building the graph. Started writing 
-                     documentation for this file.
- - 13.10.2022 | LG | Fixed bug to allow for generalized n and k values.
- - 13.10.2022 | LG | Added print_graph method to Graph class.
- - 13.10.2022 | LG | Stubbed out the generate squence methods in Graph
-                     class.
+Version History:
+    0.0.1 - Seperated from original file that previously was used to
+            solve this problem.
 """
-import time
+from .vertex import Vertex
 
-class Vertex:
-    """
-    A class to represent a vertex in a graph.
-    
-    Attributes
-    ----------
-    num : int
-        the number for this vertex to denote it's position in the graph
-    incoming : list
-        a list of verticies that have an incoming edge to this vertex
-    outgoing : list
-        a list of verticies that have an outgoing edge to this vertex
-    pos_row : int
-        the row of the graph that this vertex is in
-    pos_col : int
-        the column of the graph that this vertex is in
-        
-    Methods
-    -------
-    add_incoming(incoming_num):
-        Appends the incoming_number onto the incoming list and sorts 
-        the list.
-    add_outgoing(outgoing_num):
-        Appends the outgoing_number onto the outgoing list and sorts 
-        the list.
-    """
-    def __init__(self, num:int, pos:tuple[int,int]):
-        """
-        Constructs all the necessary attributes for a Vertex object.
-        
-        Parameters
-        ----------
-        num : int
-            the number for this vertex to denote it's position on the 
-            graph
-        pos : tuple(int,int)
-            the position of the number in the graph, used for traversing 
-            the graph
-        """
-        self.num = num
-        self.row, self.col = pos
-        self.incoming = []
-        self.outgoing = []
-        
-    def add_incoming(self, incoming_num:int) -> None:
-        """
-        Add the incoming_num onto the incoming list.
-        
-        Parameters
-        ----------
-        incoming_num : int
-            number denoting a vertex that has an incoming edge to 
-            this vertex
-            
-        Returns
-        -------
-        None
-        """
-        self.incoming.append(incoming_num)
-        self.incoming.sort()
-        
-    def add_outgoing(self, outgoing_num:int) -> None:
-        """
-        Add the outgoing_num onto the outgoing list.
-        
-        Parameters
-        ----------
-        outgoing_num : int
-            number denoting a vertex that has an outgoing edge to 
-            this vertex
-            
-        Returns
-        -------
-        None
-        """
-        self.outgoing.append(outgoing_num)
-        self.outgoing.sort()
-        
 class Graph:
     """
     A class to represent a graph of Vertex classes. 
@@ -303,20 +220,3 @@ class Graph:
     
     def generate_sequence_across(self):
         return None
-        
-if __name__ == "__main__":
-    graph = Graph(12, 3)
-    graph.build()
-    start = time.time()
-    # graph.print_graph()
-    print(graph.generate_sequence_down())
-    # print(Graph.__doc__)
-    end = time.time()
-    # print(end-start)
-    # len_of_sequence = []
-    # for num in [1, 2, 3, 4, 6, 12]:
-    #     graph = Graph(12, num)
-    #     graph.build()
-    #     len_of_sequence.append(len(graph.generate_sequence_down()))
-    # print(len_of_sequence)
-    
