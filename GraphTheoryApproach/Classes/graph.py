@@ -141,7 +141,8 @@ class Graph:
             output += line_output
             output += "-" * (1 + self.n//self.k) + "----" * (self.n//self.k) + "\n"
         print(output)
-        
+
+
     def generate_sequence_down(self) -> list:
         """
         Generates the sequence of nodes to hit to traverse the graph
@@ -217,6 +218,68 @@ class Graph:
                         last_move = None
     
         return output
+
     
+    def generate_sequence_across(self) -> list:
+        is_across = True
+        is_zigzag = False
+        last_move = None
+
+        curr_vertex:Vertex = self.graph[0][0]
+        start_vertex:Vertex = self.graph[0][0]
+
+        output = [curr_vertex.num]
+
+        while output.count(self.n) < 2:
+
+            if curr_vertex.col == len(self.graph) - 1:
+                is_across = False
+                is_zigzag = True
+            elif curr_vertex.col == 0 and curr_vertex.row == start_vertex.row + 1:
+                # Switch over to is_down
+                is_across = True
+                is_zigzag = False
+                start_vertex = curr_vertex
+                last_move = None
+            elif output.count(self.n) == 2:
+                is_across = False
+                is_zigzag = False
+
+            if is_across:
+                new_vertex:Vertex = self.graph[curr_vertex.row][curr_vertex.col+1]
+                if new_vertex.num in curr_vertex.outgoing:
+                    curr_vertex = new_vertex
+                    output.append(curr_vertex.num)
+            
+            elif is_zigzag: 
+                if last_move == None or last_move == 'back':
+                    curr_row, curr_vol = curr_vertex.row, curr_vertex.col
+                    
+
+# # Progress by doing the zigzag loop.   
+#             elif is_zigzag:
+#                 if last_move == None or last_move == "back":
+#                     curr_row, curr_col = curr_vertex.row, curr_vertex.col
+#                     if curr_col+1 >= 0 and curr_col+1 <= len(self.graph[0])-1:
+#                         new_vertex = self.graph[curr_row][curr_col+1]
+#                         if new_vertex.num in curr_vertex.outgoing:
+#                             curr_vertex = new_vertex
+#                             last_move = "across"
+#                             output.append(curr_vertex.num)
+#                 elif last_move == "across":
+#                     curr_row, curr_col = curr_vertex.row, curr_vertex.col
+#                     if((curr_row-1 >= 0 and curr_row-1 <= len(self.graph)-1) and 
+#                        (curr_col-1 >= 0 and curr_col-1 <= len(self.graph[0])-1)):
+#                         new_vertex = self.graph[curr_row-1][curr_col-1]
+#                         if new_vertex.num in curr_vertex.outgoing:
+#                             curr_vertex = new_vertex
+#                             last_move = "back"
+#                             output.append(curr_vertex.num)
+#                     else:
+#                         is_down = True
+#                         is_zigzag = False
+#                         last_move = None
+
+
     def generate_sequence_across(self):
         return None

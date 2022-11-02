@@ -63,14 +63,70 @@ def getSequence(n, x, y):
             #toggle to pattern type, straight pattern always follows a zigzag pattern
             toggle_pattern_type = 0
     
-    #print(sequence)
-    #length = len(sequence)
-    #print("Length of sequence:" + str(length))
-    #return length
     return sequence
 
-start = time.time()
-print(getSequence(12, 4, 3))
-end = time.time()
+# start = time.time()
+# print(getSequence(12, 4, 3))
+# end = time.time()
 
-print(end - start)
+# print(end - start)
+
+
+def sequenceoflengths(n, k):
+
+    
+
+    x = k
+
+    seq_of_lengths = []
+
+    seq_of_lengths.append(k)
+
+    while x <= n:
+        num_dots = x * k
+        seq = getSequence(num_dots, x, k)
+        seq_length = len(seq)
+        seq_of_lengths.append(seq_length)
+        x += k
+
+    return seq_of_lengths
+
+x = sequenceoflengths(30, 3)
+
+
+print(x)
+
+
+def return_length(n, x, y):
+    seq = getSequence(n, x, y)
+    return len(seq)
+
+a = getSequence(15, 5, 3)
+print(len(a))
+
+
+
+def new_seq_of_lengths(seq_length, k):
+
+    output = []
+
+    output.append(k)
+
+    i = 2
+
+    while i <= seq_length:
+
+        num_dots = i * k
+        output.append(len(getSequence(num_dots, i, k)))
+        i += 1
+
+    return output
+
+print(new_seq_of_lengths(10, 5))
+
+
+
+
+
+
+
