@@ -34,14 +34,17 @@ def get_divisors(n):
         
 
 # Start building graphs
-n_list = [2, 4]
+#n_list = [25, 36, 49, 64, 81, 100]
+K = 7
+n_list = [x for x in range(1, 101) if (x % K) == 0]
 
 for n in n_list:
     for k in get_divisors(n):
-        print(f"Building graph for {n} verticies in {k} rows.")
-        graph = Graph(n, k)
-        graph.build()
-        graph.print_graph()
-        filename = f"GeneratedGraphs/graph_{n}_{k}.pkl"
-        dump(graph, open(filename, "wb"))
-        print("Dumped graph to", filename)
+        if k == K:
+            print(f"Building graph for {n} verticies in {k} rows.")
+            graph = Graph(n, k)
+            graph.build()
+            #graph.print_graph()
+            filename = f"GraphTheoryApproach/Generated_Graphs/K{K}_Graphs/{n:03d}_{k:03d}.pkl"
+            dump(graph, open(filename, "wb"))
+            print("Dumped graph to", filename)
